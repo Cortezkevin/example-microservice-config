@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 4000
 
 eureka:
   client:
@@ -16,16 +16,17 @@ spring:
       discovery:
         locator:
           enabled: true
+          #lower-case-service-id: true
       routes:
       - id: user
         uri: lb://user
         predicates:
-        - Path=/users/**
+        - Path=/user/**
       - id: product
         uri: lb://product
         predicates:
-        - Path=/products/**
+        - Path=/product/**
       - id: cart
         uri: lb://cart
         predicates:
-        - Path=/carts/**
+        - Path=/cart/**
