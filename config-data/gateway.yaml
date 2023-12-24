@@ -1,0 +1,29 @@
+server:
+  port: 4000
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: user
+          uri: lb://user
+          predicates:
+            - Path=/user/**
+        - id: product
+          uri: lb://product
+          predicates:
+            - Path=/product/**
+        - id: cart
+          uri: lb://cart
+          predicates:
+            - Path=/cart/**
