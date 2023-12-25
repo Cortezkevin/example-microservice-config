@@ -1,5 +1,8 @@
+#PUERTO
 server:
   port: 8761
+
+#EUREKA
 eureka:
   client:
     fetch-registry: false

@@ -1,5 +1,8 @@
+#PUERTO
 server:
   port: ${PORT:${SERVER_PORT:0}}
+
+#EUREKA
 eureka:
   client:
     fetch-registry: true
@@ -9,6 +12,7 @@ eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
+#CIRCUIT_BREAKER
 resilience4j.circuitbreaker:
     instances:
         cartCB:
@@ -20,3 +24,7 @@ resilience4j.circuitbreaker:
             waitDurationInOpenState: 5s
             failureRateThreshold: 50
             eventConsumerBufferSize: 10
+#ZIPKIN
+spring:
+  application:
+    zipkin: http://localhost:9411

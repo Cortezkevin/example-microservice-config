@@ -1,5 +1,8 @@
+#PUERTO
 server:
   port: ${PORT:${SERVER_PORT:0}}
+
+#EUREKA
 eureka:
   client:
     fetch-registry: true
@@ -8,3 +11,8 @@ eureka:
       default-zone: http://localhost:8761/eureka
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+#ZIPKIN
+spring:
+  application:
+    zipkin: http://localhost:9411
