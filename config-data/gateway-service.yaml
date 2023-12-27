@@ -39,5 +39,3 @@ spring:
         uri: lb://auth
         predicates:
         - Path=/auth/**
-        filters:
-        - Request
