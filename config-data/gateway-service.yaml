@@ -25,6 +25,8 @@ spring:
         uri: lb://user
         predicates:
         - Path=/user/**
+        filters:
+        - AuthFilter
       - id: product
         uri: lb://product
         predicates:
@@ -33,3 +35,9 @@ spring:
         uri: lb://cart
         predicates:
         - Path=/cart/**
+      - id: auth
+        uri: lb://auth
+        predicates:
+        - Path=/auth/**
+        filters:
+        - Request
