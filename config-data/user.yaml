@@ -24,7 +24,18 @@ resilience4j.circuitbreaker:
             waitDurationInOpenState: 5s
             failureRateThreshold: 50
             eventConsumerBufferSize: 10
-            
+
+#MYSQL
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/user-service?createDatabaseIfNotExist=true
+    username: root
+    password: system
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
 #ZIPKIN
 #spring:
 #  zipkin:
