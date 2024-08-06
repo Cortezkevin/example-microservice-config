@@ -1,3 +1,12 @@
-#PUERTO
+#PUERTO ${PORT:${SERVER_PORT:0}}
 server:
-  port: ${PORT:${SERVER_PORT:0}}
+  port: 4002
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
