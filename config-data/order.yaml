@@ -10,3 +10,24 @@ eureka:
       default-zone: http://localhost:8761/eureka
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  
+resilience4j.circuitbreaker:
+    instances:
+        userCB:
+            registerHealthIndicator: true # habilitamos el registro del circuit breaker como indicador de salud en SpringActuator
+            permittedNumberOfCallsInHalfOpenState: 3 # numero de llamadas permitidas antes d decidir si el servicio cayo o esta bien
+            slidingWindowType: TIME_BASED # tipo de medicion de llamadas: TIME_BASED -> basado en tiempo, COUNT_BASED -> basado en numero de llamadas
+            slidingWindowSize: 10 # numero de segundos o llamadas necesarias dependiendo el tipo para verificar el estado del servicio
+            minimumNumberOfCalls: 4 # numero minimo de llamadas antes de calcular la tasa de fallos
+            waitDurationInOpenState: 5s # define el tiempo que el circuit breaker permanecera en Open antes de pasar a HalfOpen
+            failureRateThreshold: 50 # define el porcentaje de fallos necesarios para abrir el circuit breaker, si es mas de 50% se abre
+            eventConsumerBufferSize: 10 # tamaño del bufer de eventos para almacenar los eventos del circuit breaker, como fallos, exito etc
+        productCB:
+            registerHealthIndicator: true
+            permittedNumberOfCallsInHalfOpenState: 3
+            slidingWindowType: TIME_BASED
+            slidingWindowSize: 10
+            minimumNumberOfCalls: 4
+            waitDurationInOpenState: 5s
+            failureRateThreshold: 50
+            eventConsumerBufferSize: 10

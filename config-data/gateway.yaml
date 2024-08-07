@@ -8,18 +8,19 @@ eureka:
     service-url:
       default-zone: http://localhost:8761/eureka
   instance:
-    hostname: localhost
+    hostname: localhost #define como otros servicios pueden resolver esta instancia, lo cual es crucial para el balanceo de carga
+# le damos un host con un nombre especifico para que las otras instancias de los servicios puedan acceder a ella
 
 spring:
   cloud:
     gateway:
       discovery:
         locator:
-          enabled: true
+          enabled: true # habilitamos el acceso a los registros de servicios del servidor eureka
       routes:
       - id: user
-        uri: lb://user
-        predicates:
+        uri: lb://user # usamos el balanceo de carga , en este caso haciendo uso de las instancias registradas en eureka usando el nombre de los servicios registrados
+        predicates: # condiciones para acceder a la ruta
         - Path=/user/**
       - id: product
         uri: lb://product
