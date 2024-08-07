@@ -1,6 +1,6 @@
 #PUERTO port: ${PORT:${SERVER_PORT:0}}
 server:
-  port: 4000
+  port: ${PORT:${SERVER_PORT:0}}
 
 eureka:
   client:
