@@ -2,6 +2,7 @@
 server:
   port: ${PORT:${SERVER_PORT:0}}
 
+# EUREKA
 eureka:
   client:
     register-with-eureka: true
@@ -11,12 +12,14 @@ eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
+# ACTUATOR
 actuator:
   endpoints:
     web:
       exposure:
         include: health, info, circuitbreakers
 
+# CIRCUIT BREAKER
 resilience4j.circuitbreaker:
     instances:
         userCB:
@@ -46,3 +49,12 @@ resilience4j.circuitbreaker:
             waitDurationInOpenState: 5s
             failureRateThreshold: 50
             eventConsumerBufferSize: 10
+
+# ZIPKIN
+spring:
+  application:
+    zipkin: http://localhost:9411
+management:
+  tracing:
+    sampling:
+      probability: 1
