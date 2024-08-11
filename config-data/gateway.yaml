@@ -22,6 +22,8 @@ spring:
         uri: lb://user # usamos el balanceo de carga , en este caso haciendo uso de las instancias registradas en eureka usando el nombre de los servicios registrados
         predicates: # condiciones para acceder a la ruta
         - Path=/user/**
+        filters:
+        - AuthFilter
       - id: product
         uri: lb://product
         predicates:
