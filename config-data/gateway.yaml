@@ -30,3 +30,7 @@ spring:
         uri: lb://order
         predicates:
         - Path=/order/**
+      - id: auth
+        uri: lb://auth
+        predicates:
+        - Path=/auth/**
