@@ -6,7 +6,7 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      default-zone: http://eurekaservice:8761/eureka
+      default-zone: ${EUREKA_SERVER_ADDRESS:http://localhost:8761/eureka}
   instance:
     hostname: localhost #define como otros servicios pueden resolver esta instancia, lo cual es crucial para el balanceo de carga
 # le damos un host con un nombre especifico para que las otras instancias de los servicios puedan acceder a ella
