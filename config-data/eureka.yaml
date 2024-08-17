@@ -3,7 +3,7 @@ server:
 
 eureka:
   client:
-    register-with-eureka: false # para evitar que la instancia del servidor eureka se registre
-    fetch-registry: false # para evitar que esta instancia obtenga el registro de otras nuevas instancias
-    service-url:
-      default-zone: http://${eureka.instance.hostname}:${server.port}/eureka #${EUREKA_SERVER_ADDRESS:http://localhost:8761/eureka/}
+    registerWithEureka: false # para evitar que la instancia del servidor eureka se registre
+    fetchRegistry: false # para evitar que esta instancia obtenga el registro de otras nuevas instancias
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka #${EUREKA_SERVER_ADDRESS:http://localhost:8761/eureka/}

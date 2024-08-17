@@ -5,12 +5,12 @@ server:
 # EUREKA
 eureka:
   client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      default-zone: http://localhost:8761/eureka
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost:8761/eureka}
   instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 # ACTUATOR
 actuator:
@@ -53,7 +53,7 @@ resilience4j.circuitbreaker:
 # ZIPKIN
 spring:
   application:
-    zipkin: http://localhost:9411
+    zipkin:  ${ZIPKIN_SERVER_ADDRESS:http://localhost:9411}
 management:
   tracing:
     sampling:
